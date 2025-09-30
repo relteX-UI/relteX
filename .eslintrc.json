@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "next",
+    "plugin:storybook/recommended"
+  ]
+}
