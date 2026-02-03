@@ -119,10 +119,28 @@ export default function EnhancedComponentsPage() {
 
   return (
     <div className="container py-10">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Components</h1>
-          <p className="text-muted-foreground text-lg">Discover and explore our comprehensive component library</p>
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 text-center">
+          <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400">
+            Component Library
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Discover over 40 beautifully designed, accessible components. Copy, paste, and customize to match your design system.
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-green-500" />
+              <span>40+ Components</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-blue-500" />
+              <span>TypeScript</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-purple-500" />
+              <span>Radix UI</span>
+            </div>
+          </div>
         </div>
 
         <div className="mb-8 space-y-4">
@@ -150,25 +168,53 @@ export default function EnhancedComponentsPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredComponents.map((component) => (
-            <Link key={component.name} href={component.href}>
-              <Card className="p-6 hover:shadow-md transition-all duration-200 hover:-translate-y-1 h-full">
-                <div className="space-y-3">
+            <Link key={component.name} href={component.href} className="group">
+              <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full border-2 hover:border-primary/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10 group-hover:bg-primary/10 transition-all" />
+                <div className="space-y-4">
                   <div className="flex items-start justify-between">
-                    <h3 className="font-semibold text-lg">{component.name}</h3>
+                    <div className="flex items-center gap-2">
+                      <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                        <span className="text-lg font-bold text-primary">
+                          {component.name.charAt(0)}
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
+                          {component.name}
+                        </h3>
+                      </div>
+                    </div>
                     <Badge variant="outline" className={`text-xs ${getStatusColor(component.status)}`}>
                       {component.status}
                     </Badge>
                   </div>
 
-                  <p className="text-muted-foreground text-sm line-clamp-2">{component.description}</p>
+                  <p className="text-muted-foreground text-sm line-clamp-3">{component.description}</p>
 
-                  <div className="flex items-center justify-between pt-2">
+                  <div className="flex items-center justify-between pt-2 border-t">
                     <Badge variant="secondary" className="text-xs">
                       {component.category}
                     </Badge>
-                    <span className="text-muted-foreground text-xs">{component.lastUpdated}</span>
+                    <div className="flex items-center gap-2 text-muted-foreground text-xs">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="w-3 h-3 group-hover:translate-x-1 transition-transform"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                        />
+                      </svg>
+                      <span>View</span>
+                    </div>
                   </div>
                 </div>
               </Card>
